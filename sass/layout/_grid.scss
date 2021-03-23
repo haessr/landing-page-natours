@@ -2,7 +2,6 @@
   // max-width: 1140px
   // 1rem = 10px
   max-width: $grid-width;
-  background-color: #eee;
   // Center block elements inside other block elements
   margin: 0 auto;
 
@@ -19,7 +18,6 @@
   // *= --> contains
 
   [class^="col-"] {
-    background-color: orangered;
     float: left;
 
     &:not(:last-child) {
