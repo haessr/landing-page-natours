@@ -1,6 +1,6 @@
 .header {
   position: relative;
-  height: 95vh;
+  height: 85vh;
   /* TO SPECIFY BACKGROUND GRADIENT */
   background-image: linear-gradient(
       to right,
@@ -13,13 +13,22 @@
   background-position: top;
   /* CUSTOM CONTAINER CORNERS */
   /* CLOCK-WISE: polygon(x y, x y, x y, ....) */
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  // FEATURE QUERY
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 95vh;
+  }
 
   // MEDIA QUERY TO TARGET DEVICE RESOLUTION
   // APPLE RETINA RESOLUTION
   // 600px / 16 --> 37.7em
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+  @media (min-resolution: 192dpi) and (min-width: 37.5em),
+    (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+    (min-width: 125em) {
     background-image: linear-gradient(
         to right,
         rgba($color-primary-light, 0.8),
